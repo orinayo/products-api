@@ -1,0 +1,208 @@
+FORMAT: 1A
+HOST: https://sleepy-woodland-46242.herokuapp.com/api/v1
+
+# Product
+
+Product is an API that allows consumers to create, view and manage bucket lists.
+
+# Product API Root [/]
+
+## Retrieve the Entry Point [GET]
+
++ Response 200 (application/json)
+
+        {
+            "products_url": "/api/v1/products"
+        }
+
+## Group Product
+
+Resources related to products in the API.
+
+## Product [/products/{id}]
+
+A single Product object. The Product resource is the central resource in the Product API.
+
+The attribute value _id is assigned by the Product API at the moment of creation.
+
++ Parameters
+    + id: `5bd13af83e72d101ddb8998e` (required, string) - ID of the product in form of a string
+
++ Attributes (Product Full)
+
+
+### View a Product [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (Product Full)
+
+### Remove a Product [DELETE]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (Product Full)
+
+### Update a Product [PUT]
+
+To update a Product send a JSON with the updated value for the name and price attribute of the Product resource.
+
++ Request (application/json)
+    
+    + Body
+    
+            {
+                "name": "Adiddas",
+                "price": 1500
+            }
+        
++ Response 200 (application/json)
+
+        {
+            "products": 
+            {
+            "_id": "5bd13af83e72d101ddb8998e"
+            "name": "Adiddas",
+            "price": 1500
+            }
+        }
+
+
+## Products Collection [/products]
+
+### List All Products [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Attributes (array[Product Full])
+
+### Create a New Product [POST]
+
+You may create your own product using this action. It takes a JSON object containing the name and price of the product.
+
++ name: `ProductA` (string) - The name of the product
++ price: 1200 (number) - The price of the product
+
++ Request (application/json)
+
+    + Attributes (Product Create)
+        
++ Response 200 (application/json)
+
+    + Attributes (Product Full)
+
+## Group Details
+
+Resources related to details in the API.
+
+## Detail [/bucketlists/{id}/items/{detailId}]
+
+A single Detail object. The Date resource contains the description, category, image URL and colours of a product.
+
+The attributes values _id and product are assigned by the Product API at the moment of creation.
+
++ Parameters
+    + id: `5bb53f27266cad00965a6ff8` (required, string) - ID of the product in form of a string
+    + detailId: `5bb5e9a7e55e540086aa34c1` (required, string) - ID of the detail in form of a string
+
++ Attributes (Detail Full)
+
+
+### View a Detail [GET]
+
++ Request
+
+    + Headers
+
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+    + Attributes (Detail Full)
+ 
+   
+
+### Remove a Detail [DELETE]
+
++ Request
+
+    + Headers
+
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+    + Attributes (Detail Full)
+
+### Update a Detail [PUT]
+
+To update a Detail send a JSON with the updated value for the description, category, image URL and colours attributes of the Detail resource.
+
++ Request
+
+    + Headers
+
+            Content-type: application/json
+            
+    + Body
+
+
+            {
+                "description": "a better product",
+                "category": "cars",
+                "image": '',
+                "colours": "#fff, #000"
+            }
+        
++ Response 200 (application/json)
+
+        {
+            "detail": 
+            {
+                "_id": "5bb5e9a7e55e540086aa34c1",
+                "description": "a better product",
+                "product": {
+                    "_id": "5bd13af83e72d101ddb8998e",
+                    "name": "ProductA",
+                    "price": "1200"
+                },
+                "category": "cars",
+                "image": "www.cloudinary.com/img/url",
+                "colours": ["#fff, #000"]
+            }
+        }
+# Data Structures
+
+## Product Create (object)
+
+- name: 'ProductA' (string, required) - Name of the product.
+- price: 1200 (number, required) - Price of the product.
+
+## Product Full (object)
+
+- _id: '5bd13af83e72d101ddb8998e' (string, required) - The unique ID of the product.
+- name: 'ProductA' (string, required) - Name of the product.
+- price: '1200' (string, required) - Price of the product.
+
+## Detail Create (object)
+
+- description: 'a nice product' (string, required) - Description of the product.
+- category: 'fashion' (string, required) - Category of the product.
+- image: '' (string, required) - The image url of the product.
+- colours: '#fff, #000' (string, required) - A string of colours available for the product.
+
+## Detail Full (object)
+
+- _id: `5bd13af83e72d101ddb8998e` (string, required) - The unique ID of the product.
+- Include Product Full
+- description: 'a nice product' (string, required) - Description of the product.
+- category: 'fashion' (string, required) - Category of the product.
+- image: 'www.cloudinary.com/img/url' (string, required) - The image url of the product.
+- colours: ['#fff, #000'] (array) - An array of colours available for the product.
+    
