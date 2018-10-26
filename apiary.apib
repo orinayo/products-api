@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://sleepy-woodland-46242.herokuapp.com/api/v1
+HOST: https://afternoon-refuge-91691.herokuapp.com/api/v1
 
 # Product
 
@@ -124,7 +124,7 @@ The attributes values _id, imageId and product are assigned by the Product API a
 
 ### Update a Detail [PUT]
 
-To update a Detail send a JSON with the updated values for the description, category, image URL and colours attributes of the Detail resource.
+To update a Detail send a FormData with the updated values for the description, category, image file and colours attributes of the Detail resource.
 
 + Request
 
@@ -156,6 +156,36 @@ To update a Detail send a JSON with the updated values for the description, cate
                 "colours": ["#fff, #000"]
             }
         }
+        
+## Details Collection [/products/{id}/details]
+
++ Parameters
+    + id: `5bb53f27266cad00965a6ff8` (required, string) - ID of the product in form of a string.
+
+### List All Details [GET]
+
++ Response 200 ()
+
+    + Attributes (array[Detail Full])
+
+### Create a New Detail [POST]
+
+You may create your own details using this action. It takes FormData containing the description, category, image file and colours attributes of the Detail resource.
+
++ description: `a nice product` (string) - Description of the product.
++ category: `fashion` (string) - Category of the product.
++ image: `test.jpg` (string) - The image file path of the product.
++ colours: `#fff, #000` (string) - A string of colours available for the product.
+
++ Request ()
+
+    + Attributes (Detail Create)
+        
++ Response 200 ()
+
+    + Attributes (Detail Full)
+
+
 # Data Structures
 
 ## Product Create (object)
@@ -173,7 +203,7 @@ To update a Detail send a JSON with the updated values for the description, cate
 
 - description: 'a nice product' (string, required) - Description of the product.
 - category: 'fashion' (string, required) - Category of the product.
-- image: 'test.jpg' (string, required) - The image url of the product.
+- image: 'test.jpg' (string, required) - The image file path of the product.
 - colours: '#fff, #000' (string, required) - A string of colours available for the product.
 
 ## Detail Full (object)
