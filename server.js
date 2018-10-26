@@ -13,7 +13,7 @@ const { mongoose } = require('./db/mongoose')
 const app = express()
 
 const corsOptions = {
-  origin: ['http://localhost:3000'],
+  origin: ['http://localhost:3000', 'https://lit-basin-96922.herokuapp.com'],
   methods: ['OPTIONS', 'GET', 'PUT', 'POST', 'DELETE'],
   credentials: true,
   exposedHeaders: 'Access-Control-Origin-Allow',
