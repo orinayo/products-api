@@ -15,16 +15,23 @@
 
 3. Create a dev.js file in the config folder to hold your dev keys.
 
-4.  ``` mongoURI: 'mongodb://localhost:27017/ProductAPI',```
-    ``` port: 3001, ````
-    ``` cloudinaryName: <yourCloudinaryCloudName>,```
-    ``` cloudinaryApiKey: <yourCloudinaryApiKey>,```
-    ``` cloudinaryApiSecret: <yourCloudinaryApiSecret>```
+4. Add the following dev keys
+``` 
+mongoURI: 'mongodb://localhost:27017/ProductAPI',
+port: 3001,
+cloudinaryName: <yourCloudinaryCloudName>,
+cloudinaryApiKey: <yourCloudinaryApiKey>,
+cloudinaryApiSecret: <yourCloudinaryApiSecret>
+```
 
 ## Testing 
 ### To test the Products API
 Run the command ```npm run test``` or ```npm run test-watch``` in your terminal.
 You can also visit https://lit-basin-96922.herokuapp.com to interact with the client side.
+PRODUCT COLLECTIONS ROUTE (GET, POST) - `/products`
+PRODUCT RESOURCE ROUTE (GET, POST, PUT, DELETE) - `/products/:id`
+DETAIL COLLECTIONS ROUTE (GET, POST) - `/products/:id/details`
+DETAIL RESOURCE ROUTE (GET, POST, PUT, DELETE) - `/products/:id/details/:detailId`
 
 ## Docs
-You can find the api docs at http://localhost:3001/api/v1/docs
+You can find the api docs at https://afternoon-refuge-91691.herokuapp.com/api/v1/docs
